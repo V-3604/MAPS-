@@ -1,0 +1,116 @@
+{
+  "data_state": {
+    "current_file": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv",
+    "shape": [
+      1000,
+      8
+    ],
+    "dtypes": {
+      "date": "object",
+      "product_id": "int64",
+      "product_category": "object",
+      "region": "object",
+      "price": "float64",
+      "quantity": "float64",
+      "customer_id": "int64",
+      "total_revenue": "float64"
+    },
+    "missing_values": {
+      "date": 0,
+      "product_id": 0,
+      "product_category": 0,
+      "region": 55,
+      "price": 42,
+      "quantity": 42,
+      "customer_id": 0,
+      "total_revenue": 83
+    }
+  },
+  "operation_history": [
+    {
+      "step": 1,
+      "description": "Load CSV file",
+      "code": "pd.read_csv('/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv')",
+      "timestamp": "2025-03-15 07:14:26"
+    },
+    {
+      "step": 2,
+      "description": "Check missing values",
+      "code": "df.isna().sum()",
+      "timestamp": "2025-03-15 07:14:26",
+      "result_summary": "{'region': {'count': 55, 'percent': 5.5}, 'price': {'count': 42, 'percent': 4.2}, 'quantity': {'count': 42, 'percent': 4.2}}"
+    },
+    {
+      "step": 3,
+      "description": "Check missing values",
+      "code": "df.isna().sum()",
+      "timestamp": "2025-03-15 07:14:26",
+      "result_summary": "{'region': {'count': 55, 'percent': 5.5}, 'price': {'count': 42, 'percent': 4.2}, 'quantity': {'count': 42, 'percent': 4.2}}"
+    },
+    {
+      "step": 4,
+      "description": "Create new column 'total_revenue'",
+      "code": "df['total_revenue'] = df['price'] * df['quantity']",
+      "timestamp": "2025-03-15 07:14:26",
+      "result_summary": "Added column 'total_revenue' with data type float64"
+    },
+    {
+      "step": 5,
+      "description": "Create histogram for column 'total_revenue'",
+      "code": "sns.histplot(data=df, x='total_revenue', kde=True)",
+      "timestamp": "2025-03-15 07:14:27",
+      "result_summary": "Created histogram visualization saved to histogram_20250315_071426.png"
+    },
+    {
+      "step": 6,
+      "description": "Create bar plot for total_revenue vs region",
+      "code": "sns.barplot(data=df, x='total_revenue', y='region')",
+      "timestamp": "2025-03-15 07:14:27",
+      "result_summary": "Created bar plot visualization saved to barplot_20250315_071427.png"
+    },
+    {
+      "step": 7,
+      "description": "Create scatter plot for price vs quantity",
+      "code": "sns.scatterplot(data=df, x='price', y='quantity')",
+      "timestamp": "2025-03-15 07:14:27",
+      "result_summary": "Created scatter plot visualization saved to scatter_20250315_071427.png"
+    }
+  ],
+  "key_variables": {
+    "df": "Main dataframe with loaded data"
+  },
+  "visualizations": [
+    {
+      "id": "viz_1",
+      "type": "histogram",
+      "description": "Distribution of total_revenue",
+      "columns": [
+        "total_revenue"
+      ],
+      "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/histogram_20250315_071426.png",
+      "timestamp": "2025-03-15 07:14:27"
+    },
+    {
+      "id": "viz_2",
+      "type": "barplot",
+      "description": "Bar plot of region by total_revenue",
+      "columns": [
+        "total_revenue",
+        "region"
+      ],
+      "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/barplot_20250315_071427.png",
+      "timestamp": "2025-03-15 07:14:27"
+    },
+    {
+      "id": "viz_3",
+      "type": "scatter",
+      "description": "Relationship between price and quantity",
+      "columns": [
+        "price",
+        "quantity"
+      ],
+      "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/scatter_20250315_071427.png",
+      "timestamp": "2025-03-15 07:14:27"
+    }
+  ]
+}

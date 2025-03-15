@@ -1,0 +1,185 @@
+[
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Load data from './data/sample_datasets/sales_data.csv'"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Load data from './data/sample_datasets/sales_data.csv'"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "Error loading CSV file: No columns to parse from file",
+    "metadata": {
+      "type": "data_processing",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Show me the first 5 rows of data"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Show me the first 5 rows of data"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "I couldn't understand how to process your data query. Could you be more specific about what data operation you'd like to perform?",
+    "metadata": {
+      "type": "data_processing",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Check for missing values in the data"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Check for missing values in the data"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "No data has been loaded yet. Please load a dataset first.",
+    "metadata": {
+      "type": "data_processing",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Drop rows with missing values"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Drop rows with missing values"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "No data has been loaded yet. Please load a dataset first.",
+    "metadata": {
+      "type": "data_processing",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Create a new column 'total_revenue' as 'price' times 'quantity'"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "I'm not sure what you're asking for. Could you clarify if you want to process data, create a visualization, or check memory/context?",
+    "metadata": {
+      "type": "general",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Show the distribution of total_revenue"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "No data available for visualization. Please load or process data first.",
+    "metadata": {
+      "type": "visualization",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Create a bar chart of average total_revenue by region"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "No data available for visualization. Please load or process data first.",
+    "metadata": {
+      "type": "visualization",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Show a scatter plot of price vs quantity"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "No data available for visualization. Please load or process data first.",
+    "metadata": {
+      "type": "visualization",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Summarize what we've done so far"
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "system",
+    "content": "I'm not sure what you're asking for. Could you clarify if you want to process data, create a visualization, or check memory/context?",
+    "metadata": {
+      "type": "general",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_065705",
+    "timestamp": "2025-03-15 06:57:05",
+    "sender": "user",
+    "content": "Save a checkpoint of our current state"
+  }
+]

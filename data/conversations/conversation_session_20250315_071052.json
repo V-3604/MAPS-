@@ -1,0 +1,424 @@
+[
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Load data from '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv'"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Load data from '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv'"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed data_processing: Load data from '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv'",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "shape": [
+          1000,
+          7
+        ],
+        "columns": [
+          "date",
+          "product_id",
+          "product_category",
+          "region",
+          "price",
+          "quantity",
+          "customer_id"
+        ],
+        "head": [
+          {
+            "date": "2023-01-01",
+            "product_id": 8270,
+            "product_category": "Office",
+            "region": "Central",
+            "price": 536.93,
+            "quantity": 28.0,
+            "customer_id": 73477
+          },
+          {
+            "date": "2023-01-02",
+            "product_id": 1860,
+            "product_category": "Food",
+            "region": "South",
+            "price": NaN,
+            "quantity": 5.0,
+            "customer_id": 23210
+          },
+          {
+            "date": "2023-01-03",
+            "product_id": 6390,
+            "product_category": "Clothing",
+            "region": "North",
+            "price": 254.44,
+            "quantity": 5.0,
+            "customer_id": 93329
+          },
+          {
+            "date": "2023-01-04",
+            "product_id": 6191,
+            "product_category": "Clothing",
+            "region": "Central",
+            "price": 840.16,
+            "quantity": 21.0,
+            "customer_id": 36270
+          },
+          {
+            "date": "2023-01-05",
+            "product_id": 6734,
+            "product_category": "Food",
+            "region": "South",
+            "price": 362.62,
+            "quantity": 12.0,
+            "customer_id": 72008
+          }
+        ]
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Successfully loaded CSV from /Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_datasets/sales_data.csv. Shape: (1000, 7)",
+    "metadata": {
+      "type": "data_processing",
+      "success": true,
+      "result_summary": "{'shape': (1000, 7), 'columns': ['date', 'product_id', 'product_category', 'region', 'price', 'quant"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show me the first 5 rows of data"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show me the first 5 rows of data"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "I couldn't understand how to process your data query. Could you be more specific about what data operation you'd like to perform?",
+    "metadata": {
+      "type": "data_processing",
+      "success": false,
+      "result_summary": null
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Check for missing values in the data"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Check for missing values in the data"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed data_processing: Check for missing values in the data",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "missing_values": {
+          "region": {
+            "count": 55,
+            "percent": 5.5
+          },
+          "price": {
+            "count": 42,
+            "percent": 4.2
+          },
+          "quantity": {
+            "count": 42,
+            "percent": 4.2
+          }
+        }
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Found missing values in 3 columns.",
+    "metadata": {
+      "type": "data_processing",
+      "success": true,
+      "result_summary": "{'missing_values': {'region': {'count': 55, 'percent': 5.5}, 'price': {'count': 42, 'percent': 4.2},"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Drop rows with missing values"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Drop rows with missing values"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed data_processing: Drop rows with missing values",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "missing_values": {
+          "region": {
+            "count": 55,
+            "percent": 5.5
+          },
+          "price": {
+            "count": 42,
+            "percent": 4.2
+          },
+          "quantity": {
+            "count": 42,
+            "percent": 4.2
+          }
+        }
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Found missing values in 3 columns.",
+    "metadata": {
+      "type": "data_processing",
+      "success": true,
+      "result_summary": "{'missing_values': {'region': {'count': 55, 'percent': 5.5}, 'price': {'count': 42, 'percent': 4.2},"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Create a new column 'total_revenue' as price * quantity"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Create a new column 'total_revenue' as price * quantity"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed data_processing: Create a new column 'total_revenue' as price * quantity",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "column_name": "total_revenue",
+        "dtype": "float64",
+        "sample": [
+          15034.039999999999,
+          NaN,
+          1272.2,
+          17643.36,
+          4351.4400000000005
+        ]
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Created new column 'total_revenue' with expression: self.current_df['price'] * self.current_df['quantity']",
+    "metadata": {
+      "type": "data_processing",
+      "success": true,
+      "result_summary": "{'column_name': 'total_revenue', 'dtype': 'float64', 'sample': [15034.039999999999, nan, 1272.2, 176"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show the distribution of total_revenue"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show the distribution of total_revenue"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed visualization: Show the distribution of total_revenue",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "filepath": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/histogram_20250315_071052.png",
+        "column": "total_revenue",
+        "viz_info": {
+          "id": "viz_1",
+          "type": "histogram",
+          "description": "Distribution of total_revenue",
+          "columns": [
+            "total_revenue"
+          ],
+          "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/histogram_20250315_071052.png",
+          "timestamp": "2025-03-15 07:10:52"
+        }
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Created histogram for column 'total_revenue'",
+    "metadata": {
+      "type": "visualization",
+      "success": true,
+      "result_summary": "{'filepath': '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/histogram_20250"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Create a bar chart of average total_revenue by region"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Create a bar chart of average total_revenue by region"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed visualization: Create a bar chart of average total_revenue by region",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "filepath": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/barplot_20250315_071052.png",
+        "x_column": "total_revenue",
+        "y_column": "region",
+        "viz_info": {
+          "id": "viz_2",
+          "type": "barplot",
+          "description": "Bar plot of region by total_revenue",
+          "columns": [
+            "total_revenue",
+            "region"
+          ],
+          "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/barplot_20250315_071052.png",
+          "timestamp": "2025-03-15 07:10:52"
+        }
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Created bar plot for total_revenue vs region",
+    "metadata": {
+      "type": "visualization",
+      "success": true,
+      "result_summary": "{'filepath': '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/barplot_2025031"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show a scatter plot of price vs quantity"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Show a scatter plot of price vs quantity"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Performed visualization: Show a scatter plot of price vs quantity",
+    "metadata": {
+      "type": "operation_log",
+      "result": {
+        "filepath": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/scatter_20250315_071052.png",
+        "x_column": "price",
+        "y_column": "quantity",
+        "hue_column": null,
+        "viz_info": {
+          "id": "viz_3",
+          "type": "scatter",
+          "description": "Relationship between price and quantity",
+          "columns": [
+            "price",
+            "quantity"
+          ],
+          "file_path": "/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/scatter_20250315_071052.png",
+          "timestamp": "2025-03-15 07:10:52"
+        }
+      }
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Created scatter plot for price vs quantity",
+    "metadata": {
+      "type": "visualization",
+      "success": true,
+      "result_summary": "{'filepath': '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/visualizations/scatter_2025031"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Summarize what we've done so far"
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "system",
+    "content": "Current system context summary",
+    "metadata": {
+      "type": "memory",
+      "success": true,
+      "result_summary": "{'current_data': {'current_file': '/Users/varshithgowdak/Desktop/PersonalGithub/MAPS-/data/sample_da"
+    }
+  },
+  {
+    "session_id": "session_20250315_071052",
+    "timestamp": "2025-03-15 07:10:52",
+    "sender": "user",
+    "content": "Save a checkpoint of our current state"
+  }
+]
