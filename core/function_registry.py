@@ -1,249 +1,155 @@
+# core/function_registry.py
+from typing import Dict, Any, Callable, Optional
+
+
 class FunctionRegistry:
+    """Registry for system functions that can be called by components"""
+
     def __init__(self):
-        self.pandas_functions = self._initialize_pandas_functions()
-        self.viz_functions = self._initialize_viz_functions()
+        self.functions = {}
 
-    def _initialize_pandas_functions(self):
-        """Initialize dictionary of common pandas operations"""
-        return {
-            "read_csv": {
-                "code": "pd.read_csv('{filename}', {args})",
-                "description": "Load data from a CSV file",
-                "params": {
-                    "filename": "Path to the CSV file",
-                    "args": "Additional arguments for pd.read_csv"
-                },
-                "example": "pd.read_csv('data.csv', index_col=0)"
-            },
-            "read_excel": {
-                "code": "pd.read_excel('{filename}', {args})",
-                "description": "Load data from an Excel file",
-                "params": {
-                    "filename": "Path to the Excel file",
-                    "args": "Additional arguments for pd.read_excel"
-                },
-                "example": "pd.read_excel('data.xlsx', sheet_name='Sheet1')"
-            },
-            "drop_na": {
-                "code": "df.dropna({args})",
-                "description": "Remove rows with missing values",
-                "params": {
-                    "args": "Arguments for dropna like subset=['col1', 'col2']"
-                },
-                "example": "df.dropna(subset=['important_column'])"
-            },
-            "fill_na": {
-                "code": "df.fillna({value}, {args})",
-                "description": "Fill missing values",
-                "params": {
-                    "value": "Value to fill NAs with",
-                    "args": "Additional arguments for fillna"
-                },
-                "example": "df.fillna(0, inplace=True)"
-            },
-            "describe": {
-                "code": "df.describe({args})",
-                "description": "Generate descriptive statistics",
-                "params": {
-                    "args": "Additional arguments for describe"
-                },
-                "example": "df.describe(include='all')"
-            },
-            "group_by": {
-                "code": "df.groupby([{columns}]).{agg}()",
-                "description": "Group data by columns and apply aggregation",
-                "params": {
-                    "columns": "Columns to group by",
-                    "agg": "Aggregation function to apply"
-                },
-                "example": "df.groupby(['category', 'region']).mean()"
-            },
-            "sort_values": {
-                "code": "df.sort_values(by=[{columns}], ascending={ascending})",
-                "description": "Sort dataframe by values",
-                "params": {
-                    "columns": "Columns to sort by",
-                    "ascending": "Boolean or list of booleans for sort direction"
-                },
-                "example": "df.sort_values(by=['revenue'], ascending=False)"
-            },
-            "column_dtypes": {
-                "code": "df.dtypes",
-                "description": "Get data types of each column",
-                "params": {},
-                "example": "df.dtypes"
-            },
-            "create_column": {
-                "code": "df['{new_col}'] = {expression}",
-                "description": "Create a new column using an expression",
-                "params": {
-                    "new_col": "New column name",
-                    "expression": "Expression to calculate column values"
-                },
-                "example": "df['total'] = df['price'] * df['quantity']"
-            },
-            "rename_columns": {
-                "code": "df.rename(columns={{{column_mapping}}})",
-                "description": "Rename columns",
-                "params": {
-                    "column_mapping": "Dictionary mapping old names to new names"
-                },
-                "example": "df.rename(columns={'old_name': 'new_name'})"
-            }
-        }
+    def register_function(self, func: Callable, category: Optional[str] = None, name: Optional[str] = None) -> bool:
+        """
+        Register a function with the registry
 
-    def _initialize_viz_functions(self):
-        """Initialize dictionary of common visualization operations"""
-        return {
-            "histogram": {
-                "code": "sns.histplot(data={data}, x='{x}', {args})",
-                "description": "Create histogram of a numeric column",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column to plot",
-                    "args": "Additional arguments like kde=True, bins=30"
-                },
-                "example": "sns.histplot(data=df, x='age', kde=True, bins=20)"
-            },
-            "scatter": {
-                "code": "sns.scatterplot(data={data}, x='{x}', y='{y}', {args})",
-                "description": "Create scatter plot between two numeric columns",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column for x-axis",
-                    "y": "Column for y-axis",
-                    "args": "Additional arguments like hue='category'"
-                },
-                "example": "sns.scatterplot(data=df, x='height', y='weight', hue='gender')"
-            },
-            "line": {
-                "code": "sns.lineplot(data={data}, x='{x}', y='{y}', {args})",
-                "description": "Create line plot",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column for x-axis",
-                    "y": "Column for y-axis",
-                    "args": "Additional arguments"
-                },
-                "example": "sns.lineplot(data=df, x='year', y='revenue', hue='product')"
-            },
-            "barplot": {
-                "code": "sns.barplot(data={data}, x='{x}', y='{y}', {args})",
-                "description": "Create bar plot",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column for x-axis",
-                    "y": "Column for y-axis",
-                    "args": "Additional arguments"
-                },
-                "example": "sns.barplot(data=df, x='category', y='sales')"
-            },
-            "boxplot": {
-                "code": "sns.boxplot(data={data}, x='{x}', y='{y}', {args})",
-                "description": "Create box plot",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column for x-axis (usually categorical)",
-                    "y": "Column for y-axis (usually numeric)",
-                    "args": "Additional arguments"
-                },
-                "example": "sns.boxplot(data=df, x='category', y='distribution')"
-            },
-            "heatmap": {
-                "code": "sns.heatmap({data}, {args})",
-                "description": "Create heatmap (often used for correlation matrices)",
-                "params": {
-                    "data": "Matrix to display (e.g., df.corr())",
-                    "args": "Additional arguments like annot=True, cmap='coolwarm'"
-                },
-                "example": "sns.heatmap(df.corr(), annot=True, cmap='coolwarm')"
-            },
-            "pairplot": {
-                "code": "sns.pairplot(data={data}, {args})",
-                "description": "Create pairwise relationships plot",
-                "params": {
-                    "data": "DataFrame to use",
-                    "args": "Additional arguments like hue='category', vars=['col1', 'col2']"
-                },
-                "example": "sns.pairplot(df, hue='species')"
-            },
-            "countplot": {
-                "code": "sns.countplot(data={data}, x='{x}', {args})",
-                "description": "Create count plot for categorical data",
-                "params": {
-                    "data": "DataFrame to use",
-                    "x": "Column to count",
-                    "args": "Additional arguments"
-                },
-                "example": "sns.countplot(data=df, x='category', order=df['category'].value_counts().index)"
-            }
-        }
+        Parameters:
+        -----------
+        func : Callable
+            The function to register
+        category : str, optional
+            Category to group related functions
+        name : str, optional
+            Custom name for the function, defaults to function name
 
-    def get_pandas_function(self, func_name):
-        """Get a pandas function by name"""
-        return self.pandas_functions.get(func_name)
+        Returns:
+        --------
+        bool
+            Registration success
+        """
+        try:
+            func_name = name or func.__name__
 
-    def get_viz_function(self, func_name):
-        """Get a visualization function by name"""
-        return self.viz_functions.get(func_name)
+            # Create category if it doesn't exist
+            if category:
+                if category not in self.functions:
+                    self.functions[category] = {}
+                self.functions[category][func_name] = func
+            else:
+                # Store in root
+                self.functions[func_name] = func
 
-    def list_pandas_functions(self):
-        """List all available pandas functions"""
-        return [(name, info["description"]) for name, info in self.pandas_functions.items()]
+            return True
+        except Exception:
+            return False
 
-    def list_viz_functions(self):
-        """List all available visualization functions"""
-        return [(name, info["description"]) for name, info in self.viz_functions.items()]
+    def get_function(self, name: str, category: Optional[str] = None) -> Optional[Callable]:
+        """
+        Get a registered function
 
-    def suggest_viz_for_columns(self, df, columns):
-        """Suggest appropriate visualizations for given columns"""
-        suggestions = []
+        Parameters:
+        -----------
+        name : str
+            Function name
+        category : str, optional
+            Category to look in
 
-        # Convert columns to list if it's a string
-        if isinstance(columns, str):
-            columns = [columns]
+        Returns:
+        --------
+        Callable or None
+            The registered function or None if not found
+        """
+        try:
+            if category:
+                if category in self.functions and name in self.functions[category]:
+                    return self.functions[category][name]
 
-        # Check if all columns exist in dataframe
-        for col in columns:
-            if col not in df.columns:
-                return [f"Column '{col}' not found in dataframe"]
+                # Try alternative syntaxes if not found
+                if "." in name:
+                    parts = name.split(".")
+                    if len(parts) == 2 and parts[0] == category:
+                        if parts[1] in self.functions[category]:
+                            return self.functions[category][parts[1]]
+            else:
+                # Look directly in root functions
+                if name in self.functions:
+                    return self.functions[name]
 
-        # Single column analysis
-        if len(columns) == 1:
-            col = columns[0]
-            if pd.api.types.is_numeric_dtype(df[col]):
-                suggestions.append(("histogram", f"Distribution of {col}"))
-                suggestions.append(("boxplot", f"Box plot of {col}"))
-            elif pd.api.types.is_categorical_dtype(df[col]) or df[col].nunique() < 20:
-                suggestions.append(("countplot", f"Count of {col} categories"))
-                suggestions.append(("barplot", f"Bar plot of {col} distribution"))
+                # Look across all categories
+                for cat, funcs in self.functions.items():
+                    if isinstance(funcs, dict) and name in funcs:
+                        return funcs[name]
 
-        # Two column analysis
-        elif len(columns) == 2:
-            col1, col2 = columns
-            if pd.api.types.is_numeric_dtype(df[col1]) and pd.api.types.is_numeric_dtype(df[col2]):
-                suggestions.append(("scatter", f"Relationship between {col1} and {col2}"))
-                suggestions.append(("heatmap", f"Correlation heatmap including {col1} and {col2}"))
-            elif pd.api.types.is_numeric_dtype(df[col1]) and (
-                    pd.api.types.is_categorical_dtype(df[col2]) or df[col2].nunique() < 20):
-                suggestions.append(("boxplot", f"Distribution of {col1} by {col2} categories"))
-                suggestions.append(("barplot", f"Average {col1} by {col2} categories"))
-            elif pd.api.types.is_numeric_dtype(df[col2]) and (
-                    pd.api.types.is_categorical_dtype(df[col1]) or df[col1].nunique() < 20):
-                suggestions.append(("boxplot", f"Distribution of {col2} by {col1} categories"))
-                suggestions.append(("barplot", f"Average {col2} by {col1} categories"))
+                    # Check for alternative syntax
+                    if "." in name:
+                        parts = name.split(".")
+                        if len(parts) == 2 and parts[0] == cat and parts[1] in funcs:
+                            return funcs[parts[1]]
 
-        # Multiple columns
-        else:
-            numeric_cols = [col for col in columns if pd.api.types.is_numeric_dtype(df[col])]
-            categorical_cols = [col for col in columns if
-                                pd.api.types.is_categorical_dtype(df[col]) or df[col].nunique() < 20]
+            return None
+        except Exception:
+            return None
 
-            if len(numeric_cols) >= 2:
-                suggestions.append(("pairplot", f"Pairwise relationships among {', '.join(numeric_cols)}"))
-                suggestions.append(("heatmap", f"Correlation matrix of {', '.join(numeric_cols)}"))
+    def list_functions(self, category: Optional[str] = None) -> Dict[str, Any]:
+        """
+        List registered functions
 
-            if len(categorical_cols) > 0 and len(numeric_cols) > 0:
-                suggestions.append(("boxplot", f"Multiple box plots by categories"))
+        Parameters:
+        -----------
+        category : str, optional
+            Category to list functions from
 
-        return suggestions
+        Returns:
+        --------
+        Dict[str, Any]
+            Dictionary of function information
+        """
+        try:
+            if category:
+                if category not in self.functions:
+                    return {"success": False, "error": f"Category {category} not found"}
+
+                # Get functions in this category
+                funcs = self.functions[category]
+                if not isinstance(funcs, dict):
+                    return {"success": False, "error": f"Category {category} is not a valid category"}
+
+                return {
+                    "success": True,
+                    "category": category,
+                    "functions": list(funcs.keys())
+                }
+            else:
+                # List all functions by category
+                result = {"success": True, "categories": {}}
+
+                for key, value in self.functions.items():
+                    if isinstance(value, dict):
+                        # This is a category
+                        result["categories"][key] = list(value.keys())
+                    else:
+                        # This is a root function
+                        if "root" not in result:
+                            result["root"] = []
+                        result["root"].append(key)
+
+                return result
+
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+
+    def update_config(self, config_updates: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Update registry configuration
+
+        Parameters:
+        -----------
+        config_updates : Dict[str, Any]
+            Configuration updates
+
+        Returns:
+        --------
+        Dict[str, Any]
+            Update result
+        """
+        # This is a placeholder for actual configuration logic
+        return {"success": True, "message": "Function registry configuration updated"}
